@@ -42,4 +42,13 @@ public class CharacterSelection : MonoBehaviour
     {
         // SceneManager.LoadScene("MainScene"); 를 통해 메인 씬으로 이동
     }
+
+    public void ShowCharacterUI()
+    {
+        CharacterUI.SetActive(true);
+    }
+    public void CloseCharacterUI()
+    {
+        CharacterUI.SetActive(false);
+    }
 }
