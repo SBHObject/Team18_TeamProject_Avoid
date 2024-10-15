@@ -8,21 +8,20 @@ public class Spear : MonoBehaviour
 
     SpriteRenderer renderer;
 
-    // Start is called before the first frame update
     void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
 
-       float x = Random.Range(-2.4f, 2.4f);
-       float y = Random.Range(5.0f, 6.0f);
+       float x = Random.Range(-2.8f, 2.8f);
+       float y = 6.0f;
 
        transform.position = new Vector3(x, y, 0);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        float speed = Random.Range(0.03f, 0.1f);
+        transform.position += Vector3.down * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

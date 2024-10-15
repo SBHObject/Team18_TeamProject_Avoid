@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("MakeSpear", 0f , 1f);
+        InvokeRepeating("MakeSpear", 0f , 0.2f);
 
     }
 
