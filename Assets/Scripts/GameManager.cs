@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameObject rain;
+    public GameObject spear;
     public GameObject endPanel;
 
     public Text totalScoreTxt;
@@ -21,13 +21,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("MakeRain", 0f , 1f);
+        InvokeRepeating("MakeSpear", 0f , 1f);
 
     }
 
-    void MakeRain()
+    void MakeSpear()
     {
-        Instantiate(rain);
+        Instantiate(spear);
     }  
 
     public void AddScore(int score)
