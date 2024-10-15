@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 512917860}
   - component: {fileID: 512917859}
   m_Layer: 5
-  m_Name: TimeLabel
+  m_Name: MaxScoreLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB0A8\uC740 \uC2DC\uAC04"
+  m_Text: " \uCD5C\uACE0 \uC810\uC218"
 --- !u!222 &512917860
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -772,7 +772,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8858852, y: 1.3824599}
+  m_Size: {x: 0.55, y: 0.7}
   m_EdgeRadius: 0
 --- !u!1 &890853723
 GameObject:
@@ -958,7 +958,6 @@ MonoBehaviour:
   rain: {fileID: 2658220228572360157, guid: 005a8b5cc53eee84ebc5f66c96d070db, type: 3}
   endPanel: {fileID: 1477288353}
   totalScoreTxt: {fileID: 1867509499}
-  timeTxt: {fileID: 1231521996}
 --- !u!4 &1063788325
 Transform:
   m_ObjectHideFlags: 0
@@ -986,7 +985,7 @@ GameObject:
   - component: {fileID: 1231521997}
   - component: {fileID: 1231521996}
   m_Layer: 5
-  m_Name: Time
+  m_Name: MaxScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1044,7 +1043,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 30.00
+  m_Text: 0
 --- !u!222 &1231521997
 CanvasRenderer:
   m_ObjectHideFlags: 0

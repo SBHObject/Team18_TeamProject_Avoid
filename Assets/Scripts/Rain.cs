@@ -31,19 +31,19 @@ public class Rain : MonoBehaviour
         else if (type == 2)
         {
             size = 1.0f;
-            score = 2;
+            score = 3;
             renderer.color = new Color(130 / 255f, 150 / 255f, 1f, 1f);
         }
         else if (type == 3)
         {
             size = 1.2f;
-            score = 3;
+            score = 4;
             renderer.color = new Color(150 / 255f, 150 / 255f, 1f, 1f);
         }
         else if (type == 4)
         {
             size = 0.8f;
-            score = -5;
+            score = 1;
             renderer.color = new Color(255 / 100f, 150 / 255f, 1f, 1f);
         }
 
@@ -58,9 +58,9 @@ public class Rain : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground")) 
+        if(collision.gameObject.CompareTag("Player")) 
         {
-            Destroy(this.gameObject);
+            GameManager.Instance.EndGame();
         }
 
         if(collision.gameObject.CompareTag("Ground"))

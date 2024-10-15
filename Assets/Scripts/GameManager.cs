@@ -10,12 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject endPanel;
 
     public Text totalScoreTxt;
-    public Text timeTxt;
 
     int totalScore;
-
-    float totalTime = 30.0f;
-
 
     private void Awake()
     {
@@ -29,25 +25,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (totalTime > 0f)
-        {
-
-            totalTime -= Time.deltaTime;
-            
-        }
-        else
-        {
-            totalTime = 0f;
-            endPanel.SetActive(true);
-            Time.timeScale = 0f;
-        }
-
-        timeTxt.text = totalTime.ToString("N2");
-    }
-
     void MakeRain()
     {
         Instantiate(rain);
@@ -58,5 +35,11 @@ public class GameManager : MonoBehaviour
         totalScore += score;
         totalScoreTxt.text = totalScore.ToString();
      
+    }
+
+    public void EndGame()
+    {
+        endPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 } 
