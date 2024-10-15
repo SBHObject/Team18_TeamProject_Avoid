@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d73a42e20fd6a91438a56a44f5f4b2c3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rain: {instanceID: 0}
+  - endPanel: {instanceID: 0}
+  - totalScoreTxt: {instanceID: 0}
+  - timeTxt: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
