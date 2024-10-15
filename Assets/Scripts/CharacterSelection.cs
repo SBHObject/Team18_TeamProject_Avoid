@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.U2D.Animation;
 
 [System.Serializable]
 public class CharacterData
@@ -12,7 +10,6 @@ public class CharacterData
     public Sprite characterSprite;  // 캐릭터 이미지
     public GameObject characterPrefab;  // 선택된 캐릭터의 프리팹
 }
-
 public class CharacterSelection : MonoBehaviour
 {
     public GameObject CharacterUI;  // 캐릭터 선택 UI
@@ -37,24 +34,12 @@ public class CharacterSelection : MonoBehaviour
         CharacterData character = characters[selectedCharacterIndex];
         characterImage.sprite = character.characterSprite;
         characterNameText.text = character.characterName;
-        characterDescriptionText.text = character.description;
+        characterDescriptionText.text = character.description;  // 설명 업데이트
     }
 
     // 게임 시작 버튼 클릭 시 호출
     public void StartGame()
     {
         // SceneManager.LoadScene("MainScene"); 를 통해 메인 씬으로 이동
-    }
-
-// 캐릭터 선택 UI 표시
-public void ShowCharacterUI()
-    {
-        CharacterUI.SetActive(true);
-    }
-
-    // 캐릭터 선택 UI 숨김
-    public void CloseCharacterUI()
-    {
-        CharacterUI.SetActive(false);
     }
 }
