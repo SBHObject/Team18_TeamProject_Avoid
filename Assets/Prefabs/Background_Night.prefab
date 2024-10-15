@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6144279141467815545}
   - component: {fileID: 5842156680485171745}
   - component: {fileID: 5594489951155934467}
+  - component: {fileID: 2539615283312332454}
   m_Layer: 0
   m_Name: Background_Night
   m_TagString: Untagged
@@ -97,3 +98,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6100464385203978359}
   m_CullTransparentMesh: 1
+--- !u!114 &2539615283312332454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100464385203978359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2901e38c47e34e44aa17a5a771394097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundRenderer1: {fileID: 0}
+  backgroundRenderer2: {fileID: 5842156680485171745}
+  fadeDuration: 5
