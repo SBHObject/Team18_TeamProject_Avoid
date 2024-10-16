@@ -760,6 +760,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDead
       objectReference: {fileID: 0}
+    - target: {fileID: 7092186124219808475, guid: 2d16fe82e1e4f3a40a3147beafbabeea, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ab87c1630ec87594c97c82912b21403c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1102,6 +1106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background_Afternoon
       objectReference: {fileID: 0}
+    - target: {fileID: 8285042300483261849, guid: bfabea05fe518034bb59fb93b7325a76, type: 3}
+      propertyPath: backgroundRenderer2
+      value: 
+      objectReference: {fileID: 2025109113}
     - target: {fileID: 8470249979636296960, guid: bfabea05fe518034bb59fb93b7325a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1187,6 +1195,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfabea05fe518034bb59fb93b7325a76, type: 3}
+--- !u!212 &1886102354 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 908547478416304143, guid: bfabea05fe518034bb59fb93b7325a76, type: 3}
+  m_PrefabInstance: {fileID: 1886102353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1939957377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1252,6 +1265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2539615283312332454, guid: 7743a6d9b75cc574695b5d147799273e, type: 3}
+      propertyPath: backgroundRenderer1
+      value: 
+      objectReference: {fileID: 1886102354}
     - target: {fileID: 6100464385203978359, guid: 7743a6d9b75cc574695b5d147799273e, type: 3}
       propertyPath: m_Name
       value: Background_Night
@@ -1341,6 +1358,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7743a6d9b75cc574695b5d147799273e, type: 3}
+--- !u!212 &2025109113 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5842156680485171745, guid: 7743a6d9b75cc574695b5d147799273e, type: 3}
+  m_PrefabInstance: {fileID: 2025109112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
