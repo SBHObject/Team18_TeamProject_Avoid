@@ -50,8 +50,7 @@ public class GameManager : MonoBehaviour
         }
 
         InvokeRepeating("DropItem", 1f, 1f);
-        InvokeRepeating("MakeSpear", 0f , 0.2f);
-
+        InvokeRepeating("MakeSpear", 0f, 0.2f);
     }
 
     void DropItem()
@@ -69,7 +68,6 @@ public class GameManager : MonoBehaviour
                 Instantiate(bomb);
             }
         }
-        
     }
 
     void MakeSpear()
@@ -81,6 +79,20 @@ public class GameManager : MonoBehaviour
     {
         totalScore += score;
         totalScoreTxt.text = totalScore.ToString();
+
+        CancelInvoke("MakeSpear"); 
+        if (totalScore >= 10 && totalScore < 200)
+        {
+            InvokeRepeating("MakeSpear", 0f, 0.16f);
+        }
+        else if (totalScore >= 200)
+        {
+            InvokeRepeating("MakeSpear", 0f, 0.12f);
+        }
+        else
+        {
+            InvokeRepeating("MakeSpear", 0f, 0.2f);
+        }
     }
 
     public void EndGame()
