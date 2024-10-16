@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public Transform spawnPoint;  // 캐릭터 스폰 위치
-    public GameObject rain;
+    public GameObject Spear;
     public GameObject bomb;
     public GameObject shield;
     public GameObject endPanel;
@@ -45,8 +45,6 @@ public class GameManager : MonoBehaviour
             Debug.LogError("선택된 캐릭터 프리팹이 없습니다.");
         }
 
-        InvokeRepeating("MakeRain", 0f, 1f);  // 비 내리기 실행
-        InvokeRepeating("MakeRain", 0f, 0.5f);
         InvokeRepeating("DropItem", 1f, 1f);
         InvokeRepeating("MakeSpear", 0f , 0.2f);
 
@@ -71,9 +69,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void MakeRain()
+    void MakeSpear()
     {
-        Instantiate(rain);
+        Instantiate(Spear);
     }
 
     public void AddScore(int score)
