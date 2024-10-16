@@ -111,5 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundRenderer1: {fileID: 908547478416304143}
-  backgroundRenderer2: {fileID: 0}
+  backgroundRenderer2: {fileID: 5842156680485171745, guid: 7743a6d9b75cc574695b5d147799273e, type: 3}
   fadeDuration: 5

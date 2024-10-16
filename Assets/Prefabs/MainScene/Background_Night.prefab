@@ -110,6 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2901e38c47e34e44aa17a5a771394097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundRenderer1: {fileID: 0}
+  backgroundRenderer1: {fileID: 908547478416304143, guid: bfabea05fe518034bb59fb93b7325a76, type: 3}
   backgroundRenderer2: {fileID: 5842156680485171745}
   fadeDuration: 5
