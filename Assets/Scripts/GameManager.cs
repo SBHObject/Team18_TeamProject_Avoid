@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     void DropItem()
     {
         randomValue = Random.Range(0f, 1f);
-        if (randomValue <= 0.1f)
+        if (randomValue <= 1f)
         {
             randomValue = Random.Range(0f, 1f);
             if (randomValue <= 0.5f)
