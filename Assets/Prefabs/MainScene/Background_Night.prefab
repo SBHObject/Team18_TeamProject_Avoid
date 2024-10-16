@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8055024317326032199
+--- !u!1 &6100464385203978359
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8470249979636296960}
-  - component: {fileID: 908547478416304143}
-  - component: {fileID: 2842992822776560683}
-  - component: {fileID: 8285042300483261849}
+  - component: {fileID: 6144279141467815545}
+  - component: {fileID: 5842156680485171745}
+  - component: {fileID: 5594489951155934467}
+  - component: {fileID: 2539615283312332454}
   m_Layer: 0
-  m_Name: Background_Afternoon
+  m_Name: Background_Night
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &8470249979636296960
+--- !u!224 &6144279141467815545
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055024317326032199}
+  m_GameObject: {fileID: 6100464385203978359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 1, z: 1}
@@ -38,13 +38,13 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!212 &908547478416304143
+--- !u!212 &5842156680485171745
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055024317326032199}
+  m_GameObject: {fileID: 6100464385203978359}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 57a6f750eb7b05b4e909971b218d6c77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a77c30d8b6dd1c5409697aa988250466, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,26 +90,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!222 &2842992822776560683
+--- !u!222 &5594489951155934467
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055024317326032199}
+  m_GameObject: {fileID: 6100464385203978359}
   m_CullTransparentMesh: 1
---- !u!114 &8285042300483261849
+--- !u!114 &2539615283312332454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055024317326032199}
+  m_GameObject: {fileID: 6100464385203978359}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2901e38c47e34e44aa17a5a771394097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundRenderer1: {fileID: 908547478416304143}
-  backgroundRenderer2: {fileID: 0}
+  backgroundRenderer1: {fileID: 0}
+  backgroundRenderer2: {fileID: 5842156680485171745}
   fadeDuration: 5
