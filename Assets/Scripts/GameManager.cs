@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject endPanel;
     public Text totalScoreTxt;
 
-    public GameObject endAnimationImage; // 1초 동안 보여줄 이미지 (애니메이션)
+    public GameObject endObject; // 1초 동안 보여줄 비활성화된 게임 오브젝트
 
     private int selectedCharacterIndex = 0; // 선택된 캐릭터 인덱스
     private GameObject currentCharacter; // 현재 게임에 사용되는 캐릭터
@@ -52,25 +52,26 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        // 코루틴을 호출하여 1초 동안 이미지 애니메이션을 보여주고 그 후에 EndPanel을 띄움
-        StartCoroutine(ShowEndAnimation());
+
+        FindObjectOfType<MainSceneBGMcontroller>()?.End();
+        StartCoroutine(ShowEndObject());// // 코루틴을 호출하여 1초 동안 비활성화된 오브젝트를 활성화한 후 다시 비활성화
     }
 
-    IEnumerator ShowEndAnimation()
+    IEnumerator ShowEndObject()
     {
-        // 애니메이션 이미지 활성화
-        if (endAnimationImage != null)
+        // 오브젝트 활성화
+        if (endObject != null)
         {
-            endAnimationImage.SetActive(true); // 애니메이션 이미지를 활성화
+            endObject.SetActive(true); // 오브젝트를 활성화
         }
 
-        // 1초 동안 대기 (애니메이션이 보여지는 시간)
+        // 1초 동안 대기 (오브젝트가 활성화된 상태)
         yield return new WaitForSecondsRealtime(1f); // 실제 시간으로 1초 대기
 
-        // 애니메이션 이미지 비활성화
-        if (endAnimationImage != null)
+        // 오브젝트 비활성화
+        if (endObject != null)
         {
-            endAnimationImage.SetActive(false); // 애니메이션 이미지를 비활성화
+            endObject.SetActive(false); // 오브젝트를 비활성화
         }
 
         // End Panel 활성화
