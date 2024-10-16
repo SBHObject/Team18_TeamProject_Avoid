@@ -9,12 +9,15 @@ public class GameManager : MonoBehaviour
     public GameObject[] characterPrefabs; // 캐릭터 프리팹 배열
     public Transform spawnPoint; // 캐릭터 스폰 위치
     public GameObject rain;
+    public GameObject bomb;
+    public GameObject shield;
     public GameObject endPanel;
     public Text totalScoreTxt;
 
     private int selectedCharacterIndex = 0; // 선택된 캐릭터 인덱스
     private GameObject currentCharacter; // 현재 게임에 사용되는 캐릭터
     private int totalScore;
+    private float randomValue;
 
     private void Awake()
     {
@@ -34,8 +37,28 @@ public class GameManager : MonoBehaviour
             Debug.LogError("유효하지 않은 캐릭터 인덱스이거나 characterPrefabs 배열이 비어 있습니다.");
         }
 
-        InvokeRepeating("MakeRain", 0f, 1f);
+        InvokeRepeating("MakeRain", 0f, 0.5f);
+        InvokeRepeating("DropItem", 1f, 1f);
     }
+
+    void DropItem()
+    {
+        randomValue = Random.Range(0f, 1f);
+        if (randomValue <= 0.1f)
+        {
+            randomValue = Random.Range(0f, 1f);
+            if (randomValue <= 0.5f)
+            {
+                Instantiate(shield);
+            }
+            else
+            {
+                Instantiate(bomb);
+            }
+        }
+        
+    }
+
 
     void MakeRain()
     {
