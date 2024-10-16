@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("MakeRain", 0f, 1f);  // 비 내리기 실행
         InvokeRepeating("MakeRain", 0f, 0.5f);
         InvokeRepeating("DropItem", 1f, 1f);
+        InvokeRepeating("MakeSpear", 0f , 0.2f);
 
     }
 
