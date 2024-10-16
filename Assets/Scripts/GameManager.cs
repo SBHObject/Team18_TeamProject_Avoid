@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameObject[] characterPrefabs; // 캐릭터 프리팹 배열
-    public Transform spawnPoint; // 캐릭터 스폰 위치
-    public GameObject rain;
+    public Transform spawnPoint;  // 캐릭터 스폰 위치
+    public GameObject Spear;
     public GameObject bomb;
     public GameObject shield;
     public GameObject endPanel;
-    public Text totalScoreTxt;
+    public Text totalScoreTxt; 
+    public GameObject[] characterPrefabs;  // 캐릭터 프리팹 배열
+    public GameObject endObject; // 1초 동안 보여줄 비활성화된 게임 오브젝트
 
     private int selectedCharacterIndex = 0; // 선택된 캐릭터 인덱스
     private GameObject currentCharacter; // 현재 게임에 사용되는 캐릭터
@@ -21,24 +20,37 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
-        Time.timeScale = 1.0f;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
     {
-        // 캐릭터 스폰 전에 배열 범위 확인
-        if (characterPrefabs.Length > 0 && selectedCharacterIndex >= 0 && selectedCharacterIndex < characterPrefabs.Length)
+        InitializeGameScene();  // 게임 씬 초기화
+    }
+
+    // 게임 씬에서 캐릭터 스폰 함수
+    void InitializeGameScene()
+    {
+        GameObject selectedCharacterPrefab = CharacterManager.Instance.GetSelectedCharacterPrefab();  // 선택된 캐릭터 프리팹 가져오기
+        if (selectedCharacterPrefab != null)
         {
-            SpawnCharacter(); // 게임 시작 시 선택된 캐릭터 스폰
+            Instantiate(selectedCharacterPrefab, spawnPoint.position, Quaternion.identity);  // 캐릭터 스폰
         }
         else
         {
-            Debug.LogError("유효하지 않은 캐릭터 인덱스이거나 characterPrefabs 배열이 비어 있습니다.");
+            Debug.LogError("선택된 캐릭터 프리팹이 없습니다.");
         }
 
-        InvokeRepeating("MakeRain", 0f, 0.5f);
         InvokeRepeating("DropItem", 1f, 1f);
+        InvokeRepeating("MakeSpear", 0f, 0.2f);
     }
 
     void DropItem()
@@ -56,23 +68,58 @@ public class GameManager : MonoBehaviour
                 Instantiate(bomb);
             }
         }
-        
     }
 
-
-    void MakeRain()
+    void MakeSpear()
     {
-        Instantiate(rain);
+        Instantiate(Spear);
     }
 
     public void AddScore(int score)
     {
         totalScore += score;
         totalScoreTxt.text = totalScore.ToString();
+
+        CancelInvoke("MakeSpear"); 
+        if (totalScore >= 10 && totalScore < 200)
+        {
+            InvokeRepeating("MakeSpear", 0f, 0.16f);
+        }
+        else if (totalScore >= 200)
+        {
+            InvokeRepeating("MakeSpear", 0f, 0.12f);
+        }
+        else
+        {
+            InvokeRepeating("MakeSpear", 0f, 0.2f);
+        }
     }
 
     public void EndGame()
     {
+
+        FindObjectOfType<MainSceneBGMcontroller>()?.End();
+        StartCoroutine(ShowEndObject());// // 코루틴을 호출하여 1초 동안 비활성화된 오브젝트를 활성화한 후 다시 비활성화
+    }
+
+    IEnumerator ShowEndObject()
+    {
+        // 오브젝트 활성화
+        if (endObject != null)
+        {
+            endObject.SetActive(true); // 오브젝트를 활성화
+        }
+
+        // 1초 동안 대기 (오브젝트가 활성화된 상태)
+        yield return new WaitForSecondsRealtime(1f); // 실제 시간으로 1초 대기
+
+        // 오브젝트 비활성화
+        if (endObject != null)
+        {
+            endObject.SetActive(false); // 오브젝트를 비활성화
+        }
+
+        // End Panel 활성화
         endPanel.SetActive(true);
         Time.timeScale = 0f;
     }
