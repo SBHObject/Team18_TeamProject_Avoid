@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73a42e20fd6a91438a56a44f5f4b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rain: {fileID: 2658220228572360157, guid: 005a8b5cc53eee84ebc5f66c96d070db, type: 3}
+  spear: {fileID: 1220384737066691596, guid: a5263cc81c3ff3543964f4d49a4c78dc, type: 3}
   endPanel: {fileID: 1477288353}
   totalScoreTxt: {fileID: 1867509499}
 --- !u!4 &1063788325
@@ -1198,6 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a0434139d707f4fb5f378d27d3b7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelUI: {fileID: 0}
 --- !u!1 &1817424512
 GameObject:
   m_ObjectHideFlags: 0
