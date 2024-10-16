@@ -821,16 +821,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73a42e20fd6a91438a56a44f5f4b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefabs:
-  - {fileID: 5248323084906097730, guid: e958ad8aa0b8dab4ea73dd800789643f, type: 3}
-  - {fileID: 5248323084906097730, guid: f347abb5307a9ab4b984f8f83ff22e79, type: 3}
-  - {fileID: 5248323084906097730, guid: 28d8991384984a84f85f1fbaf3ab7983, type: 3}
   spawnPoint: {fileID: 267447331}
-  rain: {fileID: 1220384737066691596, guid: a5263cc81c3ff3543964f4d49a4c78dc, type: 3}
+  Spear: {fileID: 1220384737066691596, guid: a5263cc81c3ff3543964f4d49a4c78dc, type: 3}
   bomb: {fileID: 6398387508789024178, guid: ecb2f45744c7b0f4caa62ed7ac87e3bb, type: 3}
   shield: {fileID: 1848729027174645091, guid: 19bb6a6681083a341b8f78ef706c17d4, type: 3}
   endPanel: {fileID: 1477288353}
   totalScoreTxt: {fileID: 1867509499}
+  characterPrefabs:
+  - {fileID: 5248323084906097730, guid: e958ad8aa0b8dab4ea73dd800789643f, type: 3}
+  - {fileID: 5248323084906097730, guid: f347abb5307a9ab4b984f8f83ff22e79, type: 3}
+  - {fileID: 5248323084906097730, guid: 28d8991384984a84f85f1fbaf3ab7983, type: 3}
+  endObject: {fileID: 1477288353}
 --- !u!4 &1063788325
 Transform:
   m_ObjectHideFlags: 0

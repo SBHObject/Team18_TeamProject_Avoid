@@ -8,18 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<<< HEAD:Assets/Prefabs/Shield.prefab
   - component: {fileID: 7358762100699934820}
   - component: {fileID: 9068318662791319181}
   - component: {fileID: 1423991669883128718}
   - component: {fileID: 6653837332290572045}
-========
-  - component: {fileID: 8470249979636296960}
-  - component: {fileID: 908547478416304143}
-  - component: {fileID: 2842992822776560683}
-  - component: {fileID: 442824563200634499}
-  - component: {fileID: 8285042300483261849}
->>>>>>>> JYH_feature:Assets/Prefabs/MainScene/Background_Afternoon.prefab
   m_Layer: 0
   m_Name: Shield
   m_TagString: Ground
@@ -88,7 +80,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,7 +94,6 @@ CapsuleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3073204233090724626}
   m_Enabled: 1
-<<<<<<<< HEAD:Assets/Prefabs/Shield.prefab
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -131,41 +122,14 @@ CapsuleCollider2D:
   m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!114 &6653837332290572045
-========
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 129dfa36ad1b3d2489fd693f2c9461fa, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8285042300483261849
->>>>>>>> JYH_feature:Assets/Prefabs/MainScene/Background_Afternoon.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:Assets/Prefabs/Shield.prefab
   m_GameObject: {fileID: 3073204233090724626}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c34c120a8445aca4a9e0ac391d77d3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-========
-  m_GameObject: {fileID: 8055024317326032199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2901e38c47e34e44aa17a5a771394097, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundRenderer1: {fileID: 908547478416304143}
-  backgroundRenderer2: {fileID: 0}
-  fadeDuration: 5
->>>>>>>> JYH_feature:Assets/Prefabs/MainScene/Background_Afternoon.prefab
