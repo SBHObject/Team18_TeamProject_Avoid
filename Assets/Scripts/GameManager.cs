@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     private GameObject currentCharacter; // 현재 게임에 사용되는 캐릭터
     private int totalScore;
     private float randomValue;
+    private Coroutine spearSpawnCoroutine; // 창 생성 코루틴
+    private float spawnInterval = 0.4f;
+    private float lastSpearSpawnTime = 0f;
 
     private void Awake()
     {
@@ -29,6 +32,16 @@ public class GameManager : MonoBehaviour
         }
         InitializeGameScene();
         Instance = this;
+    }
+
+    void Update()
+    {
+        // 현재 시간에서 마지막 생성 시간의 차가 spawnInterval 이상일 경우 창 생성
+        if (Time.time - lastSpearSpawnTime >= spawnInterval)
+        {
+            Instantiate(Spear, spawnPoint.position, Quaternion.identity);
+            lastSpearSpawnTime = Time.time;
+        }
     }
 
     // 게임 씬에서 캐릭터 스폰 함수
@@ -45,7 +58,6 @@ public class GameManager : MonoBehaviour
         }
 
         InvokeRepeating("DropItem", 1f, 1f);
-        InvokeRepeating("MakeSpear", 0f, 0.2f);
     }
 
     void DropItem()
@@ -65,33 +77,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void MakeSpear()
-    {
-        Instantiate(Spear);
-    }
-
     public void AddScore(int score)
     {
         totalScore += score;
         totalScoreTxt.text = totalScore.ToString();
-        if (totalScore > int.Parse(highScore.text))
-        {
-            highScore.text = totalScore.ToString();
-            PlayerPrefs.SetString("HighScore", highScore.text);
-        }
 
-        CancelInvoke("MakeSpear"); 
-        if (totalScore >= 10 && totalScore < 200)
+        UpdateSpearSpawnInterval();
+    }
+
+    void UpdateSpearSpawnInterval()  // 점수에 따라서 spawnInterval의 주기가 짧아짐
+    {
+        if (totalScore >= 200)
         {
-            InvokeRepeating("MakeSpear", 0f, 0.16f);
+            spawnInterval = 0.15f;
+            Debug.Log("3단계");
         }
-        else if (totalScore >= 200)
+        else if (totalScore >= 100)
         {
-            InvokeRepeating("MakeSpear", 0f, 0.12f);
+            spawnInterval = 0.25f;
+            Debug.Log("2단계");
         }
         else
         {
-            InvokeRepeating("MakeSpear", 0f, 0.2f);
+            Debug.Log("1단계");
         }
     }
 
