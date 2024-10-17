@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private int totalScore;
     private float spawnInterval = 0.4f;
     private float lastSpearSpawnTime = 0f;
+    private int spearCountMultiplier = 1;  // 난이도에 따라 창 생성 개수 조정
 
     private void Awake()
     {
@@ -40,28 +41,28 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Time.timeScale = 1f;  // 게임 시간을 정상 속도로 설정 (1초로 설정)
+        Time.timeScale = RetryButton.gameSpeed; ;  // 게임 시간을 정상 속도로 설정 (1초로 설정)
+        spearCountMultiplier = RetryButton.gameSpeed == 2.0f ? 2 : 1; // 창 생성 개수 조정 (레벨 2일 때 2배로 생성)
 
         lastSpearSpawnTime = 0f;  // 창 생성 시간을 0으로 초기화
-
         InitializeGameScene();  // 게임 씬 초기화
         UpdateHighScore();
-        InvokeRepeating("DropItem", 1f, 1f);
+
+        InvokeRepeating("DropItem", 1f, 1f); // 아이템 생성 주기적으로 실행
     }
 
 
 
     void Update()
     {
-        // spawnPoint1이 파괴되지 않았는지 확인
-        if (spawnPoint1 != null && Time.time - lastSpearSpawnTime >= spawnInterval)
+        // 주기적으로 창 생성
+        if (Time.time - lastSpearSpawnTime >= spawnInterval)
         {
-            Instantiate(Spear, spawnPoint1.position, Quaternion.identity);
+            for (int i = 0; i < spearCountMultiplier; i++)  // 난이도에 따라 창 생성 개수 조정
+            {
+                Instantiate(Spear, spawnPoint1.position, Quaternion.identity);
+            }
             lastSpearSpawnTime = Time.time;
-        }
-        else if (spawnPoint1 == null)
-        {
-            Debug.LogWarning("spawnPoint1이 파괴되었습니다.");
         }
     }
 
