@@ -2140,6 +2140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111927584d31d014d8486b7bd389bb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterUI: {fileID: 0}
   characterImage: {fileID: 1638659843}
   characters:
   - characterName: "\uBD89\uC740\uC720\uB839"
