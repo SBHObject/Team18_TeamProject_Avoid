@@ -21,7 +21,7 @@ public class CharacterMoveBase : MonoBehaviour
 
     private float mapLimit = 2.8f;
 
-    public bool IsDead {  get; private set; } = false;
+    public bool IsDead {  get; set; } = false;
 
     private void Awake()
     {
@@ -109,5 +109,4 @@ public class CharacterMoveBase : MonoBehaviour
     {
         isHardMode = _isHardMode;
     }
-
 }
