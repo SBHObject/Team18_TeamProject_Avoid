@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject bomb;
     public GameObject shield;
     public GameObject endPanel;
-    public Text totalScoreTxt; 
+    public Text totalScoreTxt;
     public GameObject[] characterPrefabs;  // 캐릭터 프리팹 배열
     public GameObject endObject; // 1초 동안 보여줄 비활성화된 게임 오브젝트
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         if (Time.time - lastSpearSpawnTime >= spawnInterval)
         {
             Instantiate(Spear, spawnPoint.position, Quaternion.identity);
-            lastSpearSpawnTime = Time.time; 
+            lastSpearSpawnTime = Time.time;
         }
     }
 
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-public void EndGame()
+    public void EndGame()
     {
 
         FindObjectOfType<MainSceneBGMcontroller>()?.End();
