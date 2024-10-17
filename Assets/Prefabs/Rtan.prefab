@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 5959476454462556638}
   - component: {fileID: 6730798024358417335}
   - component: {fileID: 2309976813350946570}
+  - component: {fileID: 6779069120854307436}
   - component: {fileID: 2157671745203656678}
-  - component: {fileID: -8907877349646971691}
-  - component: {fileID: -1375826567743464410}
-  - component: {fileID: 25822236752150934}
   m_Layer: 0
   m_Name: Rtan
   m_TagString: Player
@@ -110,6 +108,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6779069120854307436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5248323084906097730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec649113cdb6ab4783ea25624aeff1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &2157671745203656678
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -155,57 +165,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.7}
   m_EdgeRadius: 0
---- !u!114 &-8907877349646971691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5248323084906097730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 12fae57456f4b164994f0b458e95d41d, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
-  m_DefaultActionMap: Player1P
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &-1375826567743464410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5248323084906097730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee1301b059a4d044eb1affb14c795cdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &25822236752150934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5248323084906097730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4f919d40068dc641a308a5d9e654094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
