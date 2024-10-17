@@ -11,10 +11,10 @@ public class CharacterMoveBase : MonoBehaviour
     protected InputContoller input;
 
     //이동 속도
-    private float speed = 0.05f;
-    protected float acceleration = 0.05f;
+    private float speed = 5f;
+    protected float acceleration = 1f;
     protected float targetSpeed;
-    private float nowSpeed;
+    protected float nowSpeed;
 
     //하드모드(미끄러짐 여부)
     protected bool isHardMode = false;
@@ -58,18 +58,7 @@ public class CharacterMoveBase : MonoBehaviour
         }
 
         //하드모드 여부에 따라 가속도 여부 결정
-        if (isHardMode)
-        {
-            nowSpeed = Mathf.Lerp(nowSpeed, targetSpeed, acceleration);
-            if (Mathf.Abs(nowSpeed) >= Mathf.Abs(targetSpeed) - 0.0001)
-            {
-                nowSpeed = targetSpeed;
-            }
-        }
-        else
-        {
-            nowSpeed = targetSpeed;
-        }
+        AccelControl(isHardMode);
 
         //실제 이동 구현부
         transform.position += Vector3.right * nowSpeed * Time.deltaTime;
@@ -90,6 +79,23 @@ public class CharacterMoveBase : MonoBehaviour
     protected virtual void MoveDirection()
     {
         
+    }
+
+    protected virtual void AccelControl(bool isHardMode)
+    {
+        //하드모드 여부에 따라 가속도 여부 결정
+        if (isHardMode)
+        {
+            nowSpeed = Mathf.Lerp(nowSpeed, targetSpeed, acceleration);
+            if (Mathf.Abs(nowSpeed) >= Mathf.Abs(targetSpeed) - 0.0001)
+            {
+                nowSpeed = targetSpeed;
+            }
+        }
+        else
+        {
+            nowSpeed = targetSpeed;
+        }
     }
 
 }

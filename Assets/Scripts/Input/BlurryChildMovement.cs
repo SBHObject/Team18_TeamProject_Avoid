@@ -8,7 +8,6 @@ public class BlurryChildMovement : CharacterMoveBase
     protected override void Start()
     {
         base.Start();
-        acceleration = acceleration * 2;
     }
 
     protected override void MoveDirection()
@@ -20,6 +19,20 @@ public class BlurryChildMovement : CharacterMoveBase
         else if (input.Dir > 0)
         {
             LookRight();
+        }
+    }
+
+    private void SetAccel(bool isHardMode)
+    {
+
+    }
+
+    protected override void AccelControl(bool isHardMode)
+    {
+        nowSpeed = Mathf.Lerp(nowSpeed, targetSpeed, acceleration);
+        if (Mathf.Abs(nowSpeed) >= Mathf.Abs(targetSpeed) - 0.0001)
+        {
+            nowSpeed = targetSpeed;
         }
     }
 }
