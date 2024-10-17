@@ -179,10 +179,14 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0ef8f9e5-28e7-40a6-92e5-ec6e87a7ec4f
+    m_ActionName: Player1P/Move
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard
-  m_DefaultActionMap: Player1P
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &-1375826567743464410
@@ -197,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1301b059a4d044eb1affb14c795cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asset1P: {fileID: -944628639613478452, guid: 12fae57456f4b164994f0b458e95d41d, type: 3}
+  asset2P: {fileID: -944628639613478452, guid: 4fdf21cbbe5d729438c8f44a8f7115d7, type: 3}
 --- !u!114 &25822236752150934
 MonoBehaviour:
   m_ObjectHideFlags: 0
