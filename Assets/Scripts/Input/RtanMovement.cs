@@ -6,11 +6,11 @@ public class RtanMovement : CharacterMoveBase
 {
     protected override void MoveDirection()
     {
-        if (input.Dir < 0)
+        if (moveDir < 0)
         {
             LookLeft();
         }
-        else if (input.Dir > 0)
+        else if (moveDir > 0)
         {
             LookRight();
         }

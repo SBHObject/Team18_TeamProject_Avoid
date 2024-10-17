@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         if (MultiplayerManager.Instance.isMultiplayer)
         {
             SpawnCharacter(2, spawnPoint2);
+            player1.GetComponent<InputContoller>().IsPlayer2(player2.GetComponent<CharacterMoveBase>());
         }
     }
 
@@ -98,8 +99,7 @@ public class GameManager : MonoBehaviour
             InputContoller inputController = player.GetComponent<InputContoller>();
             if (inputController != null)
             {
-                // 플레이어 번호에 따른 입력 설정
-                inputController.isPlayer2(playerNumber == 2);
+                //inputController.IsPlayer2(player1.GetComponent<CharacterMoveBase>());
             }
         }
         else

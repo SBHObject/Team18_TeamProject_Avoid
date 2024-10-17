@@ -6,11 +6,11 @@ public class RedGhostMovement : CharacterMoveBase
 {
     protected override void MoveDirection()
     {
-        if (input.Dir < 0)
+        if (moveDir < 0)
         {
             LookRight();
         }
-        else if (input.Dir > 0)
+        else if (moveDir > 0)
         {
             LookLeft();
         }
