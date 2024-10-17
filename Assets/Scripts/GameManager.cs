@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject bomb;
     public GameObject shield;
     public GameObject endPanel;
-    public Text totalScoreTxt; 
+    public Text totalScoreTxt;
+    public Text highScore;
     public GameObject[] characterPrefabs;  // 캐릭터 프리팹 배열
     public GameObject endObject; // 1초 동안 보여줄 비활성화된 게임 오브젝트
 
@@ -20,20 +21,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        Time.timeScale = 1.0f;
+        PlayerPrefs.GetString("HighScore", highScore.text);
+        if (highScore.text != null)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            highScore.text = "0";
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    void Start()
-    {
-        InitializeGameScene();  // 게임 씬 초기화
+        InitializeGameScene();
+        Instance = this;
     }
 
     // 게임 씬에서 캐릭터 스폰 함수
@@ -79,6 +74,11 @@ public class GameManager : MonoBehaviour
     {
         totalScore += score;
         totalScoreTxt.text = totalScore.ToString();
+        if (totalScore > int.Parse(highScore.text))
+        {
+            highScore.text = totalScore.ToString();
+            PlayerPrefs.SetString("HighScore", highScore.text);
+        }
 
         CancelInvoke("MakeSpear"); 
         if (totalScore >= 10 && totalScore < 200)
@@ -97,9 +97,23 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-
+        CancelInvoke("MakeSpear");
+        CancelInvoke("DropItem");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Rtan rtan = player.GetComponent<Rtan>();
+        rtan.isDead = true;
         FindObjectOfType<MainSceneBGMcontroller>()?.End();
         StartCoroutine(ShowEndObject());// // 코루틴을 호출하여 1초 동안 비활성화된 오브젝트를 활성화한 후 다시 비활성화
+        GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag("Item");
+        foreach (GameObject obj in objectsToDestroy)
+        {
+            Destroy(obj);
+        }
+        objectsToDestroy = GameObject.FindGameObjectsWithTag("Obstacle");
+        foreach (GameObject obj in objectsToDestroy)
+        {
+            Destroy(obj);
+        }
     }
 
     IEnumerator ShowEndObject()
