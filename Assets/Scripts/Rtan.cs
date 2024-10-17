@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Rtan : MonoBehaviour
@@ -13,6 +12,10 @@ public class Rtan : MonoBehaviour
 
     [SerializeField]
     private bool isHardMode;
+
+    // 플레이어 키 입력 설정
+    public KeyCode leftKey;  // 왼쪽 이동 키
+    public KeyCode rightKey; // 오른쪽 이동 키
 
     // Start is called before the first frame update
     void Start()
@@ -30,17 +33,19 @@ public class Rtan : MonoBehaviour
 
     private void Move()
     {
-        //방향 결정
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        // 방향 결정 (할당된 키로 이동)
+        if (Input.GetKeyDown(leftKey))
         {
             LookLeft();
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(rightKey))
         {
             LookRight();
         }
 
+        // 맵 탈출 방지
+        if (transform.position.x > 2.8f)
         //맵 탈출 방지
         if(transform.position.x > 2.8f)
         {
@@ -56,11 +61,11 @@ public class Rtan : MonoBehaviour
             transform.position = new Vector3(-2.8f, transform.position.y, 0);
         }
 
-        //하드모드 여부에 따라 가속도 여부 결정
+        // 하드모드 여부에 따른 가속도 처리
         if (isHardMode)
         {
             nowSpeed = Mathf.Lerp(nowSpeed, targetSpeed, acceleration);
-            if(Mathf.Abs(nowSpeed) >= Mathf.Abs(targetSpeed) - 0.0001)
+            if (Mathf.Abs(nowSpeed) >= Mathf.Abs(targetSpeed) - 0.0001f)
             {
                 nowSpeed = targetSpeed;
             }
@@ -70,7 +75,7 @@ public class Rtan : MonoBehaviour
             nowSpeed = targetSpeed;
         }
 
-        //실제 이동 구현부
+        // 이동 처리
         transform.position += Vector3.right * nowSpeed;
     }
 
@@ -82,7 +87,7 @@ public class Rtan : MonoBehaviour
 
     private void LookRight()
     {
-        targetSpeed = speed * 1f;
+        targetSpeed = speed;
         spriteRenderer.flipX = false;
     }
 }
