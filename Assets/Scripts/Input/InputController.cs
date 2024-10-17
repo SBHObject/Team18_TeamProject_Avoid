@@ -12,6 +12,10 @@ public class InputContoller : MonoBehaviour
     private void OnEnable()
     {
         playerInput = GetComponent<PlayerInput>();
+        if (playerInput == null)
+        {
+            Debug.LogError("PlayerInput 컴포넌트가 없습니다.");
+        }
     }
 
     private void OnMove(InputValue value)
@@ -21,12 +25,20 @@ public class InputContoller : MonoBehaviour
 
     public void isPlayer2(bool isPlayer2)
     {
-        if(isPlayer2)
+        if (isPlayer2)
         {
+            if (playerInput.actions.FindActionMap("Player2P") == null)
+            {
+                Debug.LogError("Player2P 액션 맵을 찾을 수 없습니다.");
+            }
             playerInput.defaultActionMap = "Player2P";
         }
         else
         {
+            if (playerInput.actions.FindActionMap("Player1P") == null)
+            {
+                Debug.LogError("Player1P 액션 맵을 찾을 수 없습니다.");
+            }
             playerInput.defaultActionMap = "Player1P";
         }
     }
