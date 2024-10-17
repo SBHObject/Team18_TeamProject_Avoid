@@ -10,6 +10,7 @@ public class Rtan : MonoBehaviour
     private float acceleration = 0.05f;
     private float targetSpeed;
     private float nowSpeed = 0;
+    public bool isDead = false;
 
     [SerializeField]
     private bool isHardMode;
@@ -17,7 +18,7 @@ public class Rtan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;   
+        Application.targetFrameRate = 60;
         spriteRenderer = GetComponent<SpriteRenderer>();
         targetSpeed = speed;
     }
@@ -25,7 +26,10 @@ public class Rtan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!isDead)
+        {
+            Move();
+        }
     }
 
     private void Move()
@@ -42,7 +46,7 @@ public class Rtan : MonoBehaviour
         }
 
         //¸Ê Å»Ãâ ¹æÁö
-        if(transform.position.x > 2.8f)
+        if (transform.position.x > 2.8f)
         {
             nowSpeed = 0;
             LookLeft();
@@ -60,7 +64,7 @@ public class Rtan : MonoBehaviour
         if (isHardMode)
         {
             nowSpeed = Mathf.Lerp(nowSpeed, targetSpeed, acceleration);
-            if(Mathf.Abs(nowSpeed) >= Mathf.Abs(targetSpeed) - 0.0001)
+            if (Mathf.Abs(nowSpeed) >= Mathf.Abs(targetSpeed) - 0.0001)
             {
                 nowSpeed = targetSpeed;
             }

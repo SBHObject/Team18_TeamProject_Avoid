@@ -809,6 +809,7 @@ MonoBehaviour:
   shield: {fileID: 1848729027174645091, guid: 19bb6a6681083a341b8f78ef706c17d4, type: 3}
   endPanel: {fileID: 1340407823}
   totalScoreTxt: {fileID: 1867509499}
+  highScore: {fileID: 1231521996}
   characterPrefabs:
   - {fileID: 5248323084906097730, guid: e958ad8aa0b8dab4ea73dd800789643f, type: 3}
   - {fileID: 5248323084906097730, guid: f347abb5307a9ab4b984f8f83ff22e79, type: 3}
