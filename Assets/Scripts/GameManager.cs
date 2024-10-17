@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (Instance == null)
         {
             Instance = this;
@@ -209,4 +211,5 @@ public class GameManager : MonoBehaviour
         endPanel.SetActive(true);
         Time.timeScale = 0f;
     }
+
 }
