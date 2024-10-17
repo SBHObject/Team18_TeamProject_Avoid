@@ -73,54 +73,39 @@ public class GameManager : MonoBehaviour
     void SpawnCharacter(int playerNumber, Transform spawnPoint)
     {
         int characterIndex = MultiplayerManager.Instance.GetPlayerCharacterIndex(playerNumber);
-        Debug.Log($"플레이어 {playerNumber}의 캐릭터 인덱스: {characterIndex}");
 
         if (characterIndex == -1 || characterPrefabs[characterIndex] == null)
         {
-            Debug.LogError($"플레이어 {playerNumber}의 캐릭터 프리팹이 유효하지 않습니다.");
+            Debug.LogError($"플레이어 {playerNumber}의 캐릭터 프리팹이 유효하지 않습니다. 인덱스: {characterIndex}");
             return;
         }
 
+        // 캐릭터 생성
         GameObject player = Instantiate(characterPrefabs[characterIndex], spawnPoint.position, Quaternion.identity);
         player.tag = "Player";
-        Debug.Log($"플레이어 {playerNumber} 생성 완료.");
 
-        // Rtan 컴포넌트 설정
-        Rtan rtan = player.GetComponent<Rtan>();
-        if (rtan != null)
+        // CharacterMoveBase 컴포넌트 가져오기
+        CharacterMoveBase moveBase = player.GetComponent<CharacterMoveBase>();
+        if (moveBase != null)
         {
-            // 플레이어 번호에 따라 키 설정
-            if (playerNumber == 1)
+            InputContoller inputController = player.GetComponent<InputContoller>();
+            if (inputController != null)
             {
-                rtan.leftKey = KeyCode.LeftArrow;
-                rtan.rightKey = KeyCode.RightArrow;
-            }
-            else if (playerNumber == 2)
-            {
-                rtan.leftKey = KeyCode.A;
-                rtan.rightKey = KeyCode.D;
+                // 플레이어 번호에 따른 입력 설정
+                inputController.isPlayer2(playerNumber == 2);
             }
         }
         else
         {
-            Debug.LogError($"플레이어 {playerNumber}에 Rtan 컴포넌트가 없습니다.");
-        }
-
-        // InputController 설정
-        InputContoller inputController = player.GetComponent<InputContoller>();
-        if (inputController != null)
-        {
-            inputController.isPlayer2(playerNumber == 2);
-        }
-        else
-        {
-            Debug.LogWarning($"플레이어 {playerNumber}에 InputController가 없습니다.");
+            Debug.LogError($"플레이어 {playerNumber}에 CharacterMoveBase 컴포넌트가 없습니다.");
         }
 
         // 플레이어 저장
         if (playerNumber == 1) player1 = player;
         else player2 = player;
     }
+
+
 
     // 아이템 생성 함수
     void DropItem()
