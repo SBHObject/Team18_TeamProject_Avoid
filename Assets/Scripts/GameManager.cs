@@ -61,16 +61,8 @@ public class GameManager : MonoBehaviour
     // 게임 씬 초기화 함수
     void InitializeGameScene()
     {
-        if (MultiplayerManager.Instance == null)
-        {
-            Debug.LogError("MultiplayerManager 인스턴스가 초기화되지 않았습니다.");
-            return;
-        }
-
-        // 1P 생성
         SpawnCharacter(1, spawnPoint1);
 
-        // 멀티플레이 모드일 경우 2P 생성
         if (MultiplayerManager.Instance.isMultiplayer)
         {
             SpawnCharacter(2, spawnPoint2);
@@ -81,20 +73,38 @@ public class GameManager : MonoBehaviour
     void SpawnCharacter(int playerNumber, Transform spawnPoint)
     {
         int characterIndex = MultiplayerManager.Instance.GetPlayerCharacterIndex(playerNumber);
+        Debug.Log($"플레이어 {playerNumber}의 캐릭터 인덱스: {characterIndex}");
 
-        if (characterIndex == -1)
+        if (characterIndex == -1 || characterPrefabs[characterIndex] == null)
         {
-            Debug.LogError($"플레이어 {playerNumber}의 캐릭터 인덱스가 유효하지 않습니다.");
+            Debug.LogError($"플레이어 {playerNumber}의 캐릭터 프리팹이 유효하지 않습니다.");
             return;
         }
 
         GameObject player = Instantiate(characterPrefabs[characterIndex], spawnPoint.position, Quaternion.identity);
         player.tag = "Player";
+        Debug.Log($"플레이어 {playerNumber} 생성 완료.");
 
         // Rtan 컴포넌트 설정
         Rtan rtan = player.GetComponent<Rtan>();
-        rtan.leftKey = playerNumber == 1 ? KeyCode.LeftArrow : KeyCode.A;
-        rtan.rightKey = playerNumber == 1 ? KeyCode.RightArrow : KeyCode.D;
+        if (rtan != null)
+        {
+            // 플레이어 번호에 따라 키 설정
+            if (playerNumber == 1)
+            {
+                rtan.leftKey = KeyCode.LeftArrow;
+                rtan.rightKey = KeyCode.RightArrow;
+            }
+            else if (playerNumber == 2)
+            {
+                rtan.leftKey = KeyCode.A;
+                rtan.rightKey = KeyCode.D;
+            }
+        }
+        else
+        {
+            Debug.LogError($"플레이어 {playerNumber}에 Rtan 컴포넌트가 없습니다.");
+        }
 
         // InputController 설정
         InputContoller inputController = player.GetComponent<InputContoller>();
@@ -102,7 +112,12 @@ public class GameManager : MonoBehaviour
         {
             inputController.isPlayer2(playerNumber == 2);
         }
+        else
+        {
+            Debug.LogWarning($"플레이어 {playerNumber}에 InputController가 없습니다.");
+        }
 
+        // 플레이어 저장
         if (playerNumber == 1) player1 = player;
         else player2 = player;
     }
