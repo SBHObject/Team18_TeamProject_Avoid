@@ -43,10 +43,10 @@ public class MultiplayerManager : MonoBehaviour
 
     public int GetPlayerCharacterIndex(int player)
     {
-        if (player == 1) return player1CharacterIndex;
-        else if (player == 2) return player2CharacterIndex;
+        if (player == 1) return player1CharacterIndex != -1 ? player1CharacterIndex : 0;
+        if (player == 2) return player2CharacterIndex != -1 ? player2CharacterIndex : 0;
 
         Debug.LogError($"유효하지 않은 플레이어 번호: {player}");
-        return -1;  // 유효하지 않은 플레이어 번호일 경우
+        return 0;
     }
 }
