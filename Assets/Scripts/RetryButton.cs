@@ -60,4 +60,10 @@ public class RetryButton : MonoBehaviour
         gameSpeed = 2.0f; // 2배 속도
         SceneManager.LoadScene("MainScene"); // 메인 씬 로드
     }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 }
+

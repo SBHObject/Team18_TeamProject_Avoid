@@ -35,28 +35,33 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-    }
+        Time.timeScale = 1f;  // 게임 시간을 정상 속도로 설정 (1초로 설정)
 
-    void Start()
-    {
+        lastSpearSpawnTime = 0f;  // 창 생성 시간을 0으로 초기화
+
         InitializeGameScene();  // 게임 씬 초기화
         UpdateHighScore();
         InvokeRepeating("DropItem", 1f, 1f);
     }
 
+
+
     void Update()
     {
-        // 주기적으로 창 생성
-        if (Time.time - lastSpearSpawnTime >= spawnInterval)
+        // spawnPoint1이 파괴되지 않았는지 확인
+        if (spawnPoint1 != null && Time.time - lastSpearSpawnTime >= spawnInterval)
         {
             Instantiate(Spear, spawnPoint1.position, Quaternion.identity);
             lastSpearSpawnTime = Time.time;
+        }
+        else if (spawnPoint1 == null)
+        {
+            Debug.LogWarning("spawnPoint1이 파괴되었습니다.");
         }
     }
 
