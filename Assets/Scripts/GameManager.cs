@@ -177,8 +177,8 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject player in players)
         {
-            Rtan rtan = player.GetComponent<Rtan>();
-            rtan.isDead = true;
+            CharacterMoveBase rtan = player.GetComponent<CharacterMoveBase>();
+            rtan.IsDead = true;
         }
 
         StartCoroutine(ShowEndObject());
