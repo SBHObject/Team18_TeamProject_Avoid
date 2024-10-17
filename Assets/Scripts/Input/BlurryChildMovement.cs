@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class BlurryChildMovement : CharacterMoveBase
 {
     protected override void Start()
     {
         base.Start();
+        SetAccel(isHardMode);
     }
 
     protected override void MoveDirection()
@@ -24,7 +24,10 @@ public class BlurryChildMovement : CharacterMoveBase
 
     private void SetAccel(bool isHardMode)
     {
-
+        if(isHardMode)
+        {
+            acceleration = acceleration * 0.5f;
+        }
     }
 
     protected override void AccelControl(bool isHardMode)
