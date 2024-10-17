@@ -10,13 +10,18 @@ public class VolumeManager : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private float sliderValue;
+
     private void Start()
     {
         audioSource = BGMManager.Instance.bgmSource;
+        sliderValue = volumeSlider.value / 20;
+        volumeSlider.value = sliderValue;
     }
 
     public void SetVolume()
     {
-        audioSource.volume = volumeSlider.value / 20;
+        sliderValue = volumeSlider.value / 20;
+        audioSource.volume = sliderValue;
     }
 }
