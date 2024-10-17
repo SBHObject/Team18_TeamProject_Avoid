@@ -21,6 +21,8 @@ public class CharacterMoveBase : MonoBehaviour
 
     private float mapLimit = 2.8f;
 
+    public bool IsDead {  get; private set; } = false;
+
     private void Awake()
     {
         input = GetComponent<InputContoller>();
@@ -40,6 +42,11 @@ public class CharacterMoveBase : MonoBehaviour
 
     protected void Move()
     {
+        if(IsDead == true)
+        {
+            return;
+        }
+
         MoveDirection();
 
         //∏  ≈ª√‚ πÊ¡ˆ
