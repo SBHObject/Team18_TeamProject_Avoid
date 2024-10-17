@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4495333167404809266}
   - component: {fileID: 8750772197228824903}
   - component: {fileID: 7935592417573714990}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShieldItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: {fileID: 3073204233090724626, guid: 847b649ee12de9044bd83fbcd43f1065, type: 3}
+  shieldEffect: {fileID: 8450720784180792659, guid: cd4e0530abe836740a5ef550b4be42de, type: 3}
+  bombEffect: {fileID: 6476023420004128995, guid: a23cb5446fc46b74eb0624fb398f2ecc, type: 3}
 --- !u!50 &8750772197228824903
 Rigidbody2D:
   serializedVersion: 4
