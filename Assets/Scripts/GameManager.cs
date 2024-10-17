@@ -1,180 +1,212 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Transform spawnPoint;  // 캐릭터 스폰 위치
+
+    // 스폰 위치
+    public Transform spawnPoint1;  // 1P 스폰 위치
+    public Transform spawnPoint2;  // 2P 스폰 위치
+
+    // 게임 오브젝트
     public GameObject Spear;
     public GameObject bomb;
     public GameObject shield;
     public GameObject endPanel;
-    public Text totalScoreTxt;
-    public Text highScore;
     public GameObject[] characterPrefabs;  // 캐릭터 프리팹 배열
-    public GameObject endObject; // 1초 동안 보여줄 비활성화된 게임 오브젝트
 
-    private int selectedCharacterIndex = 0; // 선택된 캐릭터 인덱스
-    private GameObject currentCharacter; // 현재 게임에 사용되는 캐릭터
+    // UI 요소
+    public Text totalScoreTxt;
+    public Text highScoreTxt;
+    public GameObject endObject;  // 종료 오브젝트
+
+    private GameObject player1;
+    private GameObject player2;
     private int totalScore;
-    private float randomValue;
-    private Coroutine spearSpawnCoroutine; // 창 생성 코루틴
     private float spawnInterval = 0.4f;
     private float lastSpearSpawnTime = 0f;
 
     private void Awake()
     {
-        Time.timeScale = 1.0f;
-        PlayerPrefs.GetString("HighScore", highScore.text);
-        if (highScore.text != null)
+        if (Instance == null)
         {
-            highScore.text = "0";
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        InitializeGameScene();
-        Instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        InitializeGameScene();  // 게임 씬 초기화
+        UpdateHighScore();
+        InvokeRepeating("DropItem", 1f, 1f);
     }
 
     void Update()
     {
-        // 현재 시간에서 마지막 생성 시간의 차가 spawnInterval 이상일 경우 창 생성
+        // 주기적으로 창 생성
         if (Time.time - lastSpearSpawnTime >= spawnInterval)
         {
-            Instantiate(Spear, spawnPoint.position, Quaternion.identity);
+            Instantiate(Spear, spawnPoint1.position, Quaternion.identity);
             lastSpearSpawnTime = Time.time;
         }
     }
 
-    // 게임 씬에서 캐릭터 스폰 함수
+    // 게임 씬 초기화 함수
     void InitializeGameScene()
     {
-        GameObject selectedCharacterPrefab = CharacterManager.Instance.GetSelectedCharacterPrefab();  // 선택된 캐릭터 프리팹 가져오기
-        if (selectedCharacterPrefab != null)
+        SpawnCharacter(1, spawnPoint1);
+
+        if (MultiplayerManager.Instance.isMultiplayer)
         {
-            Instantiate(selectedCharacterPrefab, spawnPoint.position, Quaternion.identity);  // 캐릭터 스폰
+            SpawnCharacter(2, spawnPoint2);
+        }
+    }
+
+    // 플레이어 스폰 함수
+    void SpawnCharacter(int playerNumber, Transform spawnPoint)
+    {
+        int characterIndex = MultiplayerManager.Instance.GetPlayerCharacterIndex(playerNumber);
+        Debug.Log($"플레이어 {playerNumber}의 캐릭터 인덱스: {characterIndex}");
+
+        if (characterIndex == -1 || characterPrefabs[characterIndex] == null)
+        {
+            Debug.LogError($"플레이어 {playerNumber}의 캐릭터 프리팹이 유효하지 않습니다.");
+            return;
+        }
+
+        GameObject player = Instantiate(characterPrefabs[characterIndex], spawnPoint.position, Quaternion.identity);
+        player.tag = "Player";
+        Debug.Log($"플레이어 {playerNumber} 생성 완료.");
+
+        // Rtan 컴포넌트 설정
+        Rtan rtan = player.GetComponent<Rtan>();
+        if (rtan != null)
+        {
+            // 플레이어 번호에 따라 키 설정
+            if (playerNumber == 1)
+            {
+                rtan.leftKey = KeyCode.LeftArrow;
+                rtan.rightKey = KeyCode.RightArrow;
+            }
+            else if (playerNumber == 2)
+            {
+                rtan.leftKey = KeyCode.A;
+                rtan.rightKey = KeyCode.D;
+            }
         }
         else
         {
-            Debug.LogError("선택된 캐릭터 프리팹이 없습니다.");
+            Debug.LogError($"플레이어 {playerNumber}에 Rtan 컴포넌트가 없습니다.");
         }
 
-        InvokeRepeating("DropItem", 1f, 1f);
+        // InputController 설정
+        InputContoller inputController = player.GetComponent<InputContoller>();
+        if (inputController != null)
+        {
+            inputController.isPlayer2(playerNumber == 2);
+        }
+        else
+        {
+            Debug.LogWarning($"플레이어 {playerNumber}에 InputController가 없습니다.");
+        }
+
+        // 플레이어 저장
+        if (playerNumber == 1) player1 = player;
+        else player2 = player;
     }
 
+    // 아이템 생성 함수
     void DropItem()
     {
-        randomValue = Random.Range(0f, 1f);
-        if (randomValue <= 1f)
-        {
-            randomValue = Random.Range(0f, 1f);
-            if (randomValue <= 0.5f)
-            {
-                Instantiate(shield);
-            }
-            else
-            {
-                Instantiate(bomb);
-            }
-        }
+        GameObject item = Random.Range(0f, 1f) < 0.5f ? shield : bomb;
+        Instantiate(item);
     }
 
+    // 점수 추가 함수
     public void AddScore(int score)
     {
         totalScore += score;
         totalScoreTxt.text = totalScore.ToString();
-
         UpdateSpearSpawnInterval();
+        UpdateHighScore();
     }
 
-    void UpdateSpearSpawnInterval()  // 점수에 따라서 spawnInterval의 주기가 짧아짐
+    // 창 생성 간격 조정
+    void UpdateSpearSpawnInterval()
     {
         if (totalScore >= 200)
         {
             spawnInterval = 0.15f;
-            Debug.Log("3단계");
         }
         else if (totalScore >= 100)
         {
             spawnInterval = 0.25f;
-            Debug.Log("2단계");
         }
         else
         {
-            Debug.Log("1단계");
+            spawnInterval = 0.4f;
         }
     }
 
+    // 최고 점수 업데이트
+    void UpdateHighScore()
+    {
+        int highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        if (totalScore > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", totalScore);
+            highScore = totalScore;
+        }
+
+        highScoreTxt.text = highScore.ToString();
+    }
+
+    // 게임 종료 처리
     public void EndGame()
     {
-        CancelInvoke("MakeSpear");
         CancelInvoke("DropItem");
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Rtan rtan = player.GetComponent<Rtan>();
-        rtan.isDead = true;
-        FindObjectOfType<MainSceneBGMcontroller>()?.End();
-        StartCoroutine(ShowEndObject());// // 코루틴을 호출하여 1초 동안 비활성화된 오브젝트를 활성화한 후 다시 비활성화
-        GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag("Item");
-        foreach (GameObject obj in objectsToDestroy)
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in players)
         {
-            Destroy(obj);
+            CharacterMoveBase rtan = player.GetComponent<CharacterMoveBase>();
+            rtan.IsDead = true;
         }
-        objectsToDestroy = GameObject.FindGameObjectsWithTag("Obstacle");
-        foreach (GameObject obj in objectsToDestroy)
+
+        StartCoroutine(ShowEndObject());
+
+        DestroyAllObjectsWithTag("Item");
+        DestroyAllObjectsWithTag("Obstacle");
+    }
+
+    // 특정 태그의 모든 오브젝트 제거
+    void DestroyAllObjectsWithTag(string tag)
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in objects)
         {
             Destroy(obj);
         }
     }
 
+    // 종료 UI 표시
     IEnumerator ShowEndObject()
     {
-        // 오브젝트 활성화
-        if (endObject != null)
-        {
-            endObject.SetActive(true); // 오브젝트를 활성화
-        }
+        if (endObject != null) endObject.SetActive(true);
 
-        // 1초 동안 대기 (오브젝트가 활성화된 상태)
-        yield return new WaitForSecondsRealtime(1f); // 실제 시간으로 1초 대기
+        yield return new WaitForSecondsRealtime(1f);
 
-        // 오브젝트 비활성화
-        if (endObject != null)
-        {
-            endObject.SetActive(false); // 오브젝트를 비활성화
-        }
+        if (endObject != null) endObject.SetActive(false);
 
-        // End Panel 활성화
         endPanel.SetActive(true);
         Time.timeScale = 0f;
-    }
-
-    // 캐릭터 스폰 함수
-    public void SpawnCharacter()
-    {
-        // 캐릭터 인덱스가 배열 범위 내에 있는지 다시 확인
-        if (characterPrefabs.Length > 0 && selectedCharacterIndex >= 0 && selectedCharacterIndex < characterPrefabs.Length)
-        {
-            if (currentCharacter != null)
-            {
-                Destroy(currentCharacter); // 기존 캐릭터 제거
-            }
-
-            currentCharacter = Instantiate(characterPrefabs[selectedCharacterIndex], spawnPoint.position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogError("캐릭터 인덱스가 범위를 벗어났거나 사용할 수 있는 캐릭터 프리팹이 없습니다.");
-        }
-    }
-
-    // 캐릭터 선택 함수 (캐릭터 선택 UI에서 호출)
-    public void SelectCharacter(int index)
-    {
-        if (index >= 0 && index < characterPrefabs.Length)
-        {
-            selectedCharacterIndex = index;
-        }
-        else
-        {
-            Debug.LogError("선택된 캐릭터 인덱스가 범위를 벗어났습니다.");
-        }
     }
 }
