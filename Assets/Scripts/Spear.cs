@@ -5,23 +5,24 @@ using UnityEngine;
 public class Spear : MonoBehaviour
 {
     int score = 1;
-
     SpriteRenderer renderer;
+    float speed;
+    float fixedPositionX;
 
     void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
 
-       float x = Random.Range(-2.8f, 2.8f);
-       float y = 6.0f;
+        fixedPositionX = Random.Range(-2.8f, 2.8f);
+        float y = 6.0f;
 
-       transform.position = new Vector3(x, y, 0);
+        transform.position = new Vector3(fixedPositionX, y, 0);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        float speed = Random.Range(0.03f, 0.1f);
-        transform.position += Vector3.down * speed;
+        transform.position = new Vector3(fixedPositionX, transform.position.y - speed, 0);
+        speed = Random.Range(0.03f, 0.1f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -33,8 +34,8 @@ public class Spear : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Ground"))
         {
+            Destroy(this.gameObject);
             GameManager.Instance.AddScore(score);
-            Destroy(this.gameObject );
         }
     }
 }
