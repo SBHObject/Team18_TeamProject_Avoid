@@ -1,35 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
+
 public class RetryButton : MonoBehaviour
 {
-    public GameObject CharacterUI;
     public GameObject singleOrMultiUI;
-    public GameObject LevelUI;
-    public void Retry()
+    public GameObject characterUI;
+    public GameObject levelUI;
+
+    // 싱글/멀티 UI 활성화
+    public void ShowSingleOrMultiUI()
     {
-        SceneManager.LoadScene("MainScene");
+        singleOrMultiUI.SetActive(true);
     }
+
+    // 싱글플레이 선택 시
+    public void OnSinglePlayerSelected()
+    {
+        MultiplayerManager.Instance.SetMultiplayer(false);
+        characterUI.SetActive(true);
+        singleOrMultiUI.SetActive(false);
+    }
+
+    // 멀티플레이 선택 시
+    public void OnMultiPlayerSelected()
+    {
+        MultiplayerManager.Instance.SetMultiplayer(true);
+        characterUI.SetActive(true);
+        singleOrMultiUI.SetActive(false);
+    }
+
+    // 난이도 선택 UI 활성화
     public void ShowLevelUI()
     {
-        singleOrMultiUI.SetActive(false);
-        CharacterUI.SetActive(false);
-        LevelUI.SetActive(true);
+        levelUI.SetActive(true);
+        characterUI.SetActive(false);
     }
-    public void CloseLevelUI()
+
+    // UI를 비활성화하는 함수 (X 버튼에 연결)
+    public void CloseUI(GameObject ui)
     {
-        LevelUI.SetActive(false);
+        ui.SetActive(false);
     }
-    public void ShowsingleOrMultiUI()
+
+    // 난이도 선택 및 씬 이동
+    public void SelectDifficulty(string difficulty)
     {
-        singleOrMultiUI.SetActive(true); 
-    }
-    public void ClosesingleOrMultiUI()
-    {
-        singleOrMultiUI.SetActive(false);
+        // 난이도 설정 및 게임 시작
+        SceneManager.LoadScene("MainScene");
     }
 }
-
-
