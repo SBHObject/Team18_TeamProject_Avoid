@@ -52,6 +52,8 @@ public void ShowSingleOrMultiUI()
     public void CloseUI(GameObject ui)
     {
         ui.SetActive(false);
+        // 모든 상태 초기화
+        ResetGameState();
     }
 
 
@@ -73,6 +75,23 @@ public void ShowSingleOrMultiUI()
     public void Retry()
     {
         SceneManager.LoadScene("MainScene");
+    }
+
+    private void ResetGameState()
+    {
+        // MultiplayerManager 초기화
+        MultiplayerManager.Instance.SetPlayerCharacter(1, -1);  // 1P 인덱스 초기화
+        MultiplayerManager.Instance.SetPlayerCharacter(2, -1);  // 2P 인덱스 초기화
+
+        // 싱글/멀티플레이 모드 초기화
+        MultiplayerManager.Instance.SetMultiplayer(false);
+
+        // 캐릭터 선택 인덱스 초기화 (필요 시 추가)
+        CharacterSelection characterSelection = FindObjectOfType<CharacterSelection>();
+        if (characterSelection != null)
+        {
+            characterSelection.ResetSelection();
+        }
     }
 }
 
