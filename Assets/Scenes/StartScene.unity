@@ -2379,7 +2379,7 @@ GameObject:
   - component: {fileID: 1055519001}
   - component: {fileID: 1055519000}
   m_Layer: 5
-  m_Name: Play(CharacterUIBtn)
+  m_Name: Play(CharacterSelection)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
