@@ -21,11 +21,13 @@ public class GameManager : MonoBehaviour
     // UI 요소
     public Text totalScoreTxt;
     public Text highScoreTxt;
+    public Text StartTxt;
     public GameObject endObject;  // 종료 오브젝트
 
     private GameObject player1;
     private GameObject player2;
     private int totalScore;
+    private float startDelay = 2f;
     private float spawnInterval = 0.4f;
     private float lastSpearSpawnTime = 0f;
     private int spearCountMultiplier = 1;  // 난이도에 따라 창 생성 개수 조정
@@ -51,13 +53,35 @@ public class GameManager : MonoBehaviour
         spearCountMultiplier = RetryButton.level == 2 ? 2 : 1; // 창 생성 개수 조정 (레벨 2일 때 2배로 생성)
 
         lastSpearSpawnTime = 0f;  // 창 생성 시간을 0으로 초기화
-        InitializeGameScene();  // 게임 씬 초기화
         UpdateHighScore();
+        //InitializeGameScene();
 
         InvokeRepeating("DropItem", 1f, 1f); // 아이템 생성 주기적으로 실행
+
+        Time.timeScale = 0f;
+
+        StartCoroutine(StartGameDelay());
     }
 
+    IEnumerator StartGameDelay()
+    {
+        if (StartTxt != null)
+        {
+            StartTxt.text = "Game Start!";
+            StartTxt.gameObject.SetActive(true);
+        }
 
+        yield return new WaitForSecondsRealtime(startDelay);
+
+        if (StartTxt != null)
+        {
+            StartTxt.gameObject.SetActive(false);
+        }
+
+        Time.timeScale = 1f;
+
+        InitializeGameScene();  // 게임 씬 초기화
+    }
 
     void Update()
     {
