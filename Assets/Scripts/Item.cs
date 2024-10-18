@@ -31,7 +31,34 @@ public class Item : MonoBehaviour
                 // 실드 효과 생성 및 0.5초 후 제거
                 GameObject shieldEffectInstance = Instantiate(shieldEffect, transform.position, Quaternion.identity);
                 Destroy(shieldEffectInstance, 0.5f);  // 실드 효과 0.5초 후 제거
-                Instantiate(shield);
+                                                      // 두 개의 타겟만 실드를 부여
+                int activeShields = 0;
+
+                // ShieldTarget1 컴포넌트가 있는지 확인
+                ShieldTarget1 target1 = FindObjectOfType<ShieldTarget1>();
+                if (target1 != null && activeShields < 2)
+                {
+                    GameObject shield1 = Instantiate(shield, target1.transform.position, Quaternion.identity);
+                    shield1.GetComponent<Shield>().SetTarget(target1.transform);
+                    activeShields++;
+                }
+
+                // ShieldTarget2 컴포넌트가 있는지 확인
+                ShieldTarget2 target2 = FindObjectOfType<ShieldTarget2>();
+                if (target2 != null && activeShields < 2)
+                {
+                    GameObject shield2 = Instantiate(shield, target2.transform.position, Quaternion.identity);
+                    shield2.GetComponent<Shield>().SetTarget(target2.transform);
+                    activeShields++;
+                }
+
+                // ShieldTarget3 컴포넌트가 있는지 확인
+                ShieldTarget3 target3 = FindObjectOfType<ShieldTarget3>();
+                if (target3 != null && activeShields < 2)
+                {
+                    GameObject shield3 = Instantiate(shield, target3.transform.position, Quaternion.identity);
+                    shield3.GetComponent<Shield>().SetTarget(target3.transform);
+                }
             } else if (itemName == "Bomb(Clone)")
             {
                 // 폭탄 효과 생성 및 0.5초 후 제거

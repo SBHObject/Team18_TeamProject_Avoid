@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -4369309741781330924}
   - component: {fileID: -5712945022690581419}
   - component: {fileID: -2009024870435818177}
+  - component: {fileID: 732411726934258680}
   m_Layer: 0
   m_Name: Blurry child
   m_TagString: Player
@@ -201,8 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1301b059a4d044eb1affb14c795cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset1P: {fileID: -944628639613478452, guid: 12fae57456f4b164994f0b458e95d41d, type: 3}
-  asset2P: {fileID: -944628639613478452, guid: 4fdf21cbbe5d729438c8f44a8f7115d7, type: 3}
 --- !u!114 &-2009024870435818177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,5 +212,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4aca61ac0be1f547becbad448320f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &732411726934258680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5248323084906097730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6410c0963a38d7441af215ed903f9800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

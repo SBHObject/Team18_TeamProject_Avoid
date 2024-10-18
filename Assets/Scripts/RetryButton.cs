@@ -9,6 +9,7 @@ public class RetryButton : MonoBehaviour
     // 난이도 선택 및 씬 이동
     // 정적 변수로 난이도 설정
     public static float gameSpeed = 1.0f;
+    public static int level;
 
     private void Start()
      { 
@@ -51,13 +52,15 @@ public void ShowSingleOrMultiUI()
     public void CloseUI(GameObject ui)
     {
         ui.SetActive(false);
+        // 모든 상태 초기화
+        ResetGameState();
     }
 
 
     // 레벨 1 버튼
     public void OnLevel1Button()
     {
-        gameSpeed = 1.0f; // 기본 속도
+        level = 1;
         SceneManager.LoadScene("MainScene"); // 메인 씬 로드
 
     }
@@ -65,13 +68,30 @@ public void ShowSingleOrMultiUI()
     // 레벨 2 버튼
     public void OnLevel2Button()
     {
-        gameSpeed = 2.0f; // 2배 속도
+        level = 2;
         SceneManager.LoadScene("MainScene"); // 메인 씬 로드
     }
 
     public void Retry()
     {
         SceneManager.LoadScene("MainScene");
+    }
+
+    private void ResetGameState()
+    {
+        // MultiplayerManager 초기화
+        MultiplayerManager.Instance.SetPlayerCharacter(1, -1);  // 1P 인덱스 초기화
+        MultiplayerManager.Instance.SetPlayerCharacter(2, -1);  // 2P 인덱스 초기화
+
+        // 싱글/멀티플레이 모드 초기화
+        MultiplayerManager.Instance.SetMultiplayer(false);
+
+        // 캐릭터 선택 인덱스 초기화 (필요 시 추가)
+        CharacterSelection characterSelection = FindObjectOfType<CharacterSelection>();
+        if (characterSelection != null)
+        {
+            characterSelection.ResetSelection();
+        }
     }
 }
 

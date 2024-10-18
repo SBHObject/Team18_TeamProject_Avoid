@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8907877349646971691}
   - component: {fileID: -1375826567743464410}
   - component: {fileID: 25822236752150934}
+  - component: {fileID: -4744476570992935438}
   m_Layer: 0
   m_Name: Rtan
   m_TagString: Player
@@ -201,8 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1301b059a4d044eb1affb14c795cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset1P: {fileID: -944628639613478452, guid: 12fae57456f4b164994f0b458e95d41d, type: 3}
-  asset2P: {fileID: -944628639613478452, guid: 4fdf21cbbe5d729438c8f44a8f7115d7, type: 3}
 --- !u!114 &25822236752150934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,5 +212,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4f919d40068dc641a308a5d9e654094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4744476570992935438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5248323084906097730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3072519bb633554409ad663750c186dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
