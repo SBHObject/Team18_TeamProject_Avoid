@@ -158,11 +158,11 @@ public class GameManager : MonoBehaviour
     // 창 생성 간격 조정
     void UpdateSpearSpawnInterval()
     {
-        if (totalScore >= 200)
+        if (totalScore >= 20)
         {
             spawnInterval = 0.15f;
         }
-        else if (totalScore >= 100)
+        else if (totalScore >= 10)
         {
             spawnInterval = 0.25f;
         }
