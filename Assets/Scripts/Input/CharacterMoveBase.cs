@@ -13,7 +13,7 @@ public class CharacterMoveBase : MonoBehaviour
 
     //이동 속도
     private float speed = 5f;
-    protected float acceleration = 0.02f;
+    protected float acceleration = 0.01f;
     protected float targetSpeed;
     protected float nowSpeed;
 

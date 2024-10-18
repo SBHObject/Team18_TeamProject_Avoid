@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (BGMManager.Instance != null)
+        {
+            BGMManager.Instance.SetBGMSpeed(RetryButton.gameSpeed);  // gameSpeed에 맞게 BGM 속도를 설정
+        }
+
         Time.timeScale = RetryButton.gameSpeed; ;  // 게임 시간을 정상 속도로 설정 (1초로 설정)
         spearCountMultiplier = RetryButton.gameSpeed == 2.0f ? 2 : 1; // 창 생성 개수 조정 (레벨 2일 때 2배로 생성)
 
@@ -97,11 +103,7 @@ public class GameManager : MonoBehaviour
         CharacterMoveBase moveBase = player.GetComponent<CharacterMoveBase>();
         if (moveBase != null)
         {
-            InputContoller inputController = player.GetComponent<InputContoller>();
-            if (inputController != null)
-            {
-                //inputController.IsPlayer2(player1.GetComponent<CharacterMoveBase>());
-            }
+            moveBase.SetHardMode(RetryButton.gameSpeed >= 1.5f);
         }
         else
         {

@@ -10,8 +10,16 @@ public class RetryButton : MonoBehaviour
     // 정적 변수로 난이도 설정
     public static float gameSpeed = 1.0f;
 
-    // 싱글/멀티 UI 활성화
-    public void ShowSingleOrMultiUI()
+    private void Start()
+     { 
+        if (BGMManager.Instance != null)
+        {
+            BGMManager.Instance.SetBGMSpeed(1f);  // gameSpeed에 맞게 BGM 속도를 설정
+        }
+     }
+
+// 싱글/멀티 UI 활성화
+public void ShowSingleOrMultiUI()
     {
         singleOrMultiUI.SetActive(true);
     }
