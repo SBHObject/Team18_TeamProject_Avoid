@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             BGMManager.Instance.SetBGMSpeed(RetryButton.gameSpeed);  // gameSpeed에 맞게 BGM 속도를 설정
         }
 
-        Time.timeScale = RetryButton.gameSpeed; // 게임 시간을 정상 속도로 설정 (1초로 설정)
+        Time.timeScale = RetryButton.gameSpeed; // 게임 시간을 정상 속도로 설정
         spearCountMultiplier = RetryButton.level == 2 ? 2 : 1; // 창 생성 개수 조정 (레벨 2일 때 2배로 생성)
 
         lastSpearSpawnTime = 0f;  // 창 생성 시간을 0으로 초기화
