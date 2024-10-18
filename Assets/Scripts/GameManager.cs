@@ -103,11 +103,7 @@ public class GameManager : MonoBehaviour
         CharacterMoveBase moveBase = player.GetComponent<CharacterMoveBase>();
         if (moveBase != null)
         {
-            InputContoller inputController = player.GetComponent<InputContoller>();
-            if (inputController != null)
-            {
-                //inputController.IsPlayer2(player1.GetComponent<CharacterMoveBase>());
-            }
+            moveBase.SetHardMode(RetryButton.gameSpeed >= 1.5f);
         }
         else
         {
