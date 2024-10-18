@@ -1,4 +1,6 @@
+#if UNITY_EDITOR
 using UnityEditor.U2D.Animation;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 
