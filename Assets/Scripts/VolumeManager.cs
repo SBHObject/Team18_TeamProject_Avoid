@@ -1,27 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class VolumeManager : MonoBehaviour
 {
-    //소리 조절 슬라이더
-    public Slider volumeSlider;
+    //오디오 믹서
+    public AudioMixer audioMixer;
+    
+    //bgm소리 조절 슬라이더
+    public Slider bgmVolumeSlider;
+    private float bgmSliderValue;
 
-    private AudioSource audioSource;
-
-    private float sliderValue;
+    //SFX 소리조절 슬라이더
+    public Slider sfxVolumeSlider;
+    private float sfxSliderValue;
 
     private void Start()
     {
-        audioSource = BGMManager.Instance.bgmSource;
-        sliderValue = volumeSlider.value / 20;
-        volumeSlider.value = sliderValue;
+        bgmVolumeSlider.value = bgmSliderValue;
+
+        sfxVolumeSlider.value = sfxSliderValue;
     }
 
-    public void SetVolume()
+    public void SetBGMVolume()
     {
-        sliderValue = volumeSlider.value / 20;
-        audioSource.volume = sliderValue;
+        if (bgmVolumeSlider.value > -20)
+        {
+            bgmSliderValue = bgmVolumeSlider.value;
+        }
+        else
+        {
+            bgmSliderValue = -80;
+        }
+        audioMixer.SetFloat("BgmVolume", bgmSliderValue);
+    }
+
+    public void SetSFXVolume()
+    {
+        if (sfxVolumeSlider.value > -20)
+        {
+            sfxSliderValue = sfxVolumeSlider.value;
+        }
+        else
+        {
+            sfxSliderValue = -80;
+        }
+        audioMixer.SetFloat("SfxVolume", sfxSliderValue);
     }
 }
