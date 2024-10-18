@@ -62,10 +62,20 @@
 
 
 - 싱글플레이시
-  - 캐릭터를 선택하고 선택 완료를 클릭하면 게임이 시작됩니다.
+  - 캐릭터를 선택하고 선택 완료를 클릭하면 난이도를 선택합니다..
 - 멀티플레이시
   - 캐릭터를 선택하고 선택 완료를 클릭하면 1P 의 캐릭터가 지정됩니다.
-  - 한번 더 캐릭터를 선택한 뒤, 선택 완료를 누르면 게임이 시작됩니다.
+  - 한번 더 캐릭터를 선택한 뒤, 선택 완료를 누르면 난이도를 선택합니다..
+
+#### 난이도 선택
+![난이도 선택 이미지](https://fancy-yew-65f.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fda811b88-ccb8-4c60-939e-555c95bb143b%2Ffe539742-20ef-4bcf-8485-fc408cb629c0%2F%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7(1078).png?table=block&id=65eb4e26-61ed-40e8-b1cb-de403f02f043&spaceId=da811b88-ccb8-4c60-939e-555c95bb143b&width=600&userId=&cache=v2)
+
+- Easy, Hard 버튼을 클릭하여 난이도를 선택합니다.
+- 버튼을 누르면 게임이 시작됩니다.
+- 하드모드 선택시 변경사항입니다.
+  - 창이 2배 많이 생성됩니다.
+  - 게임 속도가 빨라집니다.
+  - 캐릭터의 방향전환시 관성이 적용됩니다. 흐릿한 아이는 2배로 미끄러집니다.
 
 #### 게임 종료 UI
 ![게임 종료](https://fancy-yew-65f.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fda811b88-ccb8-4c60-939e-555c95bb143b%2Fd1087270-c83a-4d46-a9ed-b992722a4350%2F%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7(1076).png?table=block&id=cd0e9b8e-9bb3-4383-a563-a199348953a6&spaceId=da811b88-ccb8-4c60-939e-555c95bb143b&width=600&userId=&cache=v2)
