@@ -9,6 +9,7 @@ public class RetryButton : MonoBehaviour
     // 난이도 선택 및 씬 이동
     // 정적 변수로 난이도 설정
     public static float gameSpeed = 1.0f;
+    public static int level;
 
     private void Start()
      { 
@@ -57,7 +58,7 @@ public void ShowSingleOrMultiUI()
     // 레벨 1 버튼
     public void OnLevel1Button()
     {
-        gameSpeed = 1.0f; // 기본 속도
+        level = 1;
         SceneManager.LoadScene("MainScene"); // 메인 씬 로드
 
     }
@@ -65,7 +66,7 @@ public void ShowSingleOrMultiUI()
     // 레벨 2 버튼
     public void OnLevel2Button()
     {
-        gameSpeed = 2.0f; // 2배 속도
+        level = 2;
         SceneManager.LoadScene("MainScene"); // 메인 씬 로드
     }
 
