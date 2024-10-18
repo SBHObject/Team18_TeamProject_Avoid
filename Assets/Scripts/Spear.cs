@@ -37,5 +37,10 @@ public class Spear : MonoBehaviour
             Destroy(this.gameObject);
             GameManager.Instance.AddScore(score);
         }
+
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
