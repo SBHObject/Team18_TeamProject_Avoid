@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7014072490532530036}
   - component: {fileID: -2497584130839034909}
   - component: {fileID: 6460032581186787491}
+  - component: {fileID: 4044854970930686728}
   m_Layer: 0
   m_Name: RedGost
   m_TagString: Player
@@ -201,8 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1301b059a4d044eb1affb14c795cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset1P: {fileID: -944628639613478452, guid: 12fae57456f4b164994f0b458e95d41d, type: 3}
-  asset2P: {fileID: -944628639613478452, guid: 4fdf21cbbe5d729438c8f44a8f7115d7, type: 3}
 --- !u!114 &6460032581186787491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,5 +212,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f57d0479000a7c9499f6dfa43e1fbab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4044854970930686728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5248323084906097730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b249acc08c37094d8285bf1401c3995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
