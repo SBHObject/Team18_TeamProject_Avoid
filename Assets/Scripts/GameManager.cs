@@ -104,7 +104,6 @@ public class GameManager : MonoBehaviour
         if (MultiplayerManager.Instance.isMultiplayer)
         {
             SpawnCharacter(2, spawnPoint2);
-            player1.GetComponent<InputContoller>().IsPlayer2(player2.GetComponent<CharacterMoveBase>());
         }
     }
 
@@ -128,6 +127,8 @@ public class GameManager : MonoBehaviour
         if (moveBase != null)
         {
             moveBase.SetHardMode(RetryButton.level >= 2);
+            InputContoller contoller = player.GetComponent<InputContoller>();
+            contoller.IsPlayer2(playerNumber == 2);
         }
         else
         {

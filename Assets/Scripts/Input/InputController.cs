@@ -8,12 +8,9 @@ public class InputContoller : MonoBehaviour
 {
     private PlayerInput playerInput;
 
-    private CharacterMoveBase player2Move;
-
     public UnityAction<float> OnPlayer2Move;
 
     public float Dir { get; private set; }
-    private float player2Dir;
 
     private void OnEnable()
     {
@@ -25,16 +22,15 @@ public class InputContoller : MonoBehaviour
         Dir = value.Get<float>();
     }
 
-    private void OnMove2P(InputValue value)
+    public void IsPlayer2(bool isPlayer2)
     {
-        player2Dir = value.Get<float>();
-        OnPlayer2Move?.Invoke(player2Dir);
-    }
-
-    public void IsPlayer2(CharacterMoveBase _player2Move)
-    {
-        player2Move = _player2Move;
-
-        player2Move.SetThis2P(this);
+        if(isPlayer2)
+        {
+            playerInput.SwitchCurrentActionMap("Player2P");
+        }
+        else
+        {
+            playerInput.SwitchCurrentActionMap("Player1P");
+        }
     }
 }
