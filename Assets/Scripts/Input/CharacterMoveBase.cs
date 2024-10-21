@@ -35,7 +35,6 @@ public class CharacterMoveBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        input.OnPlayer2Move += Player2Dir;
         spriteRenderer = GetComponent<SpriteRenderer>();
         targetSpeed = speed;
         LookLeft();
@@ -119,17 +118,5 @@ public class CharacterMoveBase : MonoBehaviour
     public void SetHardMode(bool _isHardMode)
     {
         isHardMode = _isHardMode;
-    }
-
-    public void SetThis2P(InputContoller contoller)
-    {
-        is2P = true;
-
-        input = contoller;
-    }
-
-    private void Player2Dir(float value)
-    {
-        moveDir = value;
     }
 }

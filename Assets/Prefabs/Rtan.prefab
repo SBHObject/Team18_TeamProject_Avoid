@@ -186,8 +186,8 @@ MonoBehaviour:
     m_ActionId: 0ef8f9e5-28e7-40a6-92e5-ec6e87a7ec4f
     m_ActionName: Player1P/Move
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard
-  m_DefaultActionMap: Player
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player1P
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &-1375826567743464410

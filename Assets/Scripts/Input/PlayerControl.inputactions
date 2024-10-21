@@ -2,22 +2,13 @@
     "name": "PlayerControl",
     "maps": [
         {
-            "name": "Player",
+            "name": "Player1P",
             "id": "d2eba64d-a5ee-4a1d-b318-8e367e170ac4",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Button",
                     "id": "0ef8f9e5-28e7-40a6-92e5-ec6e87a7ec4f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Move2P",
-                    "type": "Button",
-                    "id": "ac8e8a38-6943-4ad9-ac46-ef98840775bb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -57,37 +48,54 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
+                }
+            ]
+        },
+        {
+            "name": "Player2P",
+            "id": "1b24266e-8d53-4b4d-87fa-a05479769175",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "2a5faf72-f646-42d9-8018-6c3fc674a95e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "AD",
-                    "id": "cf0248ab-9497-4601-a4bd-d4d678906a0d",
+                    "id": "20db21b5-af59-4e52-a68a-bb2dd1f8a82b",
                     "path": "1DAxis",
                     "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
-                    "action": "Move2P",
+                    "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "negative",
-                    "id": "7b2c18f5-4939-4244-9172-768ac860376e",
+                    "id": "9bc2e3fb-0a7c-4240-bdc4-84db5b25d973",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move2P",
+                    "groups": "Keyboard",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "positive",
-                    "id": "74611a64-464a-4311-9d11-68404117db53",
+                    "id": "57bab935-cfb9-4282-846f-3b68a8696e00",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move2P",
+                    "groups": "Keyboard",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
